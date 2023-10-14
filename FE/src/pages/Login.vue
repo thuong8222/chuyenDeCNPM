@@ -15,6 +15,26 @@ export default {
       IsHide: false ,
     };
   },
+    created() {
+    const token = this.$cookies.get('myToken');
+    if (token) {
+      axios.get(apiUrl + '/home', {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      })
+        .then(response => {
+          this.$router.push("/");
+        })
+        .catch(error => {
+          console.log("er", error.request?.response);
+        });
+
+
+    } else {
+      this.$router.push("/login");
+    }
+  },
   methods: {
     login() {
       if (this.validateForm()) {
