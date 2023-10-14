@@ -1,6 +1,10 @@
 
 <script>
 import { loginAcc } from '../util/login';
+import axios from 'axios'
+import { environment } from "../environment/env";
+
+const apiUrl = environment.apiUrl;
 
 export default {
   data() {
